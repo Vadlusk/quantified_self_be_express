@@ -7,6 +7,10 @@ The application's functionality is that of a basic calorie counter.  The user ca
 # Setup
 1. Clone or fork this repo.
 2. Move into the directory.
+3. `npm i`
+
+To run the test suite, type `yarn test`   
+To run the local server, type `yarn start`
 
 # Endpoints
 
