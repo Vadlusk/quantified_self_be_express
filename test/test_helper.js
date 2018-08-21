@@ -18,3 +18,5 @@ beforeEach((done) => {
       throw error;
     });
 });
+
+modules.exports = chai

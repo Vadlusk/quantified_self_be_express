@@ -2,18 +2,6 @@
 
 module.exports = {
 
-  development: {
-    client: 'pg',
-    connection: 'postgres://localhost/quantified_self_express_dev',
-    migrations: {
-      directory: './db/migrations'
-    },
-    seeds: {
-      directory: './db/seeds/dev'
-    },
-    useNullAsDefault: true
-  },
-
   test: {
     client: 'pg',
     connection: 'postgres://localhost/quantified_self_express_test',
@@ -22,6 +10,18 @@ module.exports = {
     },
     seeds: {
       directory: './db/seeds/test'
+    },
+    useNullAsDefault: true
+  },
+
+  development: {
+    client: 'pg',
+    connection: 'postgres://localhost/quantified_self_express_dev',
+    migrations: {
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds/dev'
     },
     useNullAsDefault: true
   },
