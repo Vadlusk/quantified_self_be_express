@@ -19,4 +19,7 @@ beforeEach((done) => {
     });
 });
 
-modules.exports = chai
+module.exports = {
+  chai,
+  app
+}
