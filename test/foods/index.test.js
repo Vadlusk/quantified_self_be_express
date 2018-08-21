@@ -1,6 +1,8 @@
+var config = require('../test_helper.js')
+
 describe('GET /api/v1/foods', () => {
   it('should return all of the foods', done => {
-    chai.request(app)
+    config.chai.request(config.app)
       .get('/api/v1/foods')
       .end((err, response) => {
         response.should.have.status(200);
