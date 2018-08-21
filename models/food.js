@@ -4,6 +4,8 @@ const database = require('knex')(configuration);
 
 class Food {
   static all() {
-    return database.select().from('foods')
+    return database('foods').select()
   }
 }
+
+module.exports = Food
