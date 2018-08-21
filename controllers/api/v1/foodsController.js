@@ -5,4 +5,12 @@ const index = (req, res, next) => {
     .then(foods => res.json(foods))
 }
 
-module.exports = { index }
+const show = (req, res, next) => {
+  Food.find(req.params.id)
+    .then(food => res.json(food))
+}
+
+module.exports = {
+  index,
+  show
+}
