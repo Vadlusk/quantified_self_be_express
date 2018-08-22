@@ -4,5 +4,6 @@ const foodsController = require('../../../controllers/api/v1/foodsController');
 
 router.get('/', foodsController.index);
 router.get('/:id', foodsController.show);
+router.put('/:id', foodsController.update)
 
 module.exports = router;

@@ -10,6 +10,13 @@ class Food {
   static find(id) {
     return database('foods').where({id: id}).first()
   }
+
+  static update(id, props) {
+    return database('foods')
+      .where({id: id})
+      .update(props)
+      .returning(['id', 'name', 'calories'])
+  }
 }
 
 module.exports = Food
