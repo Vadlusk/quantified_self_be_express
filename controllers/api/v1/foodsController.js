@@ -21,11 +21,7 @@ const update = (req, res, next) => {
 }
 
 const sendFood = (food, res) => {
-  if(food) {
-    res.json(food)
-  } else {
-    res.status(404).send
-  }
+  food ? res.json(food) : res.status(404).send
 }
 
 module.exports = {
