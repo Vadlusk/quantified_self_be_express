@@ -14,14 +14,18 @@ class Food {
   }
 
   static find(id) {
-    return database('foods').where({id: id}).first()
+    return database('foods').where({id}).first()
   }
 
   static update(id, props) {
     return database('foods')
-      .where({id: id})
+      .where({id})
       .update(props)
       .returning(['id', 'name', 'calories'])
+  }
+
+  static destroy(id) {
+    return database('foods').where({id}).del()
   }
 }
 

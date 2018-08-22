@@ -21,7 +21,8 @@ const update = (req, res, next) => {
 }
 
 const destroy = (req, res, next) => {
-  Food.find(req.params.id) ? Food.destroy(req.params.id) : res.status(404).send
+  Food.destroy(req.params.id)
+    .then(res.sendStatus(204))
 }
 
 const sendFood = (food, res) => {
