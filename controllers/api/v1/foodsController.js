@@ -20,6 +20,11 @@ const update = (req, res, next) => {
     .then(food => sendFood(food[0], res))
 }
 
+const destroy = (req, res, next) => {
+  Food.destroy(req.params.id)
+    .then(res.sendStatus(204))
+}
+
 const sendFood = (food, res) => {
   food ? res.json(food) : res.status(404).send
 }
@@ -28,5 +33,6 @@ module.exports = {
   create,
   index,
   show,
-  update
+  update,
+  destroy
 }
