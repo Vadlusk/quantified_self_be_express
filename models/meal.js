@@ -6,6 +6,10 @@ class Meal {
   static all() {
     return database('meals').select()
   }
+
+  static find(id) {
+    return database('meals').where({id})
+  }
 }
 
 module.exports = Meal;
