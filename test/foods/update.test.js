@@ -4,7 +4,7 @@ describe('PUT /api/v1/foods/:id', () => {
   it('should edit a specific food with a name', done => {
     config.chai.request(config.app)
       .put('/api/v1/foods/1')
-      .send({ food: { 'name': 'Heeyy you guys', calories: 50 } })
+      .send({ food: { 'name': 'Heeyy you guys', 'calories': 50 } })
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
