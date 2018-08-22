@@ -3,6 +3,12 @@ const configuration = require('../knexfile')[environment];
 const database = require('knex')(configuration);
 
 class Food {
+  static create(props) {
+    return database('foods')
+      .insert(props)
+      .returning(['id', 'name', 'calories'])
+  }
+
   static all() {
     return database('foods').select()
   }

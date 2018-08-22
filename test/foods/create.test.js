@@ -9,10 +9,10 @@ describe('POST /api/v1/foods', () => {
         response.should.have.status(200);
         response.should.be.json;
         response.body.should.be.a('object');
+        console.log(response.body);
         response.body.should.have.property('id')
         response.body.should.have.property('name')
         response.body.should.have.property('calories')
-        response.body.id.should.equal(4)
         response.body.name.should.equal('chicken')
         response.body.calories.should.equal(200)
         done();

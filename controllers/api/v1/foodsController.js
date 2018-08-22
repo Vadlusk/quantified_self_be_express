@@ -2,7 +2,7 @@ const Food = require('../../../models/food')
 
 const create = (req, res, next) => {
   Food.create(req.body.food)
-    .then(food => res.json(food))
+    .then(food => res.json(food[0]))
 }
 
 const index = (req, res, next) => {
@@ -29,6 +29,7 @@ const sendFood = (food, res) => {
 }
 
 module.exports = {
+  create,
   index,
   show,
   update
