@@ -1,6 +1,9 @@
-const Meal = require('../../../models/meal');
+const MealFood = require('../../../models/mealFood');
+const Meal     = require('../../../models/meal');
+const Food     = require('../../../models/food');
 
 const create = (req, res, next) => {
+  console.log(req.params)
   MealFood.create()
 }
 
