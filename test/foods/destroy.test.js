@@ -1,4 +1,4 @@
-var config = require('../testHelper.js')
+var config = require('../testHelper')
 
 describe('DELETE /api/v1/foods/:id', () => {
   it('should delete a specific food', done => {

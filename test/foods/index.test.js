@@ -1,4 +1,4 @@
-var config = require('../testHelper.js')
+var config = require('../testHelper')
 
 describe('GET /api/v1/foods', () => {
   it('should return all of the foods', done => {

@@ -1,4 +1,4 @@
-var config = require('../testHelper.js')
+var config = require('../testHelper')
 
 describe('POST /api/v1/foods', () => {
   it('should create a food', done => {
