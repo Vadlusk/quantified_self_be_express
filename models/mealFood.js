@@ -5,7 +5,7 @@ const database = require('knex')(configuration);
 class MealFood {
   static create(params) {
     database.raw(
-      'INSERT INTO meal_foods (mealId, foodId) VALUES (?, ?)',
+      'INSERT INTO meal_foods (meal_id, food_id) VALUES (?, ?)',
       [params.mealId, params.foodId]
     )}
 }
