@@ -1,5 +1,9 @@
 const Meal = require('../../../models/meal');
 
+const create = (req, res, next) => {
+  MealFood.create()
+}
+
 const index = (req, res, next) => {
   Meal.all()
     .then(meals => res.json(meals))
@@ -12,5 +16,6 @@ const show = (req, res, next) => {
 
 module.exports = {
   index,
-  show
+  show,
+  create
 }
