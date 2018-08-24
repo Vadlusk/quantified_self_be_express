@@ -1,12 +1,11 @@
-
-exports.seed = function(knex, Promise) {
+exports.seed = (knex, Promise) => {
   return knex('meals').del()
-    .then(function () {
+    .then(() => {
       return knex('meals').insert([
-        {id: 1, name: 'breakfast'},
-        {id: 2, name: 'snacks'},
-        {id: 3, name: 'lunch'},
-        {id: 4, name: 'dinner'}
+        {name: 'breakfast'},
+        {name: 'snacks'},
+        {name: 'lunch'},
+        {name: 'dinner'}
       ])
     });
 };
