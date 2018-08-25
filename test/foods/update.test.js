@@ -1,4 +1,4 @@
-var config = require('../testHelper.js')
+var config = require('../testHelper')
 
 describe('PUT /api/v1/foods/:id', () => {
   it('should edit a specific food with a name', done => {

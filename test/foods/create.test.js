@@ -1,4 +1,4 @@
-var config = require('../testHelper.js')
+var config = require('../testHelper')
 
 describe('POST /api/v1/foods', () => {
   it('should create a food', done => {
@@ -9,7 +9,6 @@ describe('POST /api/v1/foods', () => {
         response.should.have.status(200);
         response.should.be.json;
         response.body.should.be.a('object');
-        console.log(response.body);
         response.body.should.have.property('id')
         response.body.should.have.property('name')
         response.body.should.have.property('calories')

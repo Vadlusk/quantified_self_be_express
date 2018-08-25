@@ -1,4 +1,4 @@
-var config = require('../testHelper.js')
+var config = require('../testHelper')
 
 describe('GET /api/v1/meals/:id', () => {
   it('should return a specific meal', done => {
@@ -8,10 +8,10 @@ describe('GET /api/v1/meals/:id', () => {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
-        res.body.should.have.property('id')
-        res.body.should.have.property('name')
-        res.body.id.should.equal(1)
-        res.body.name.should.equal('breakfast')
+        res.body.should.have.property('id');
+        res.body.should.have.property('name');
+        res.body.id.should.equal(1);
+        res.body.name.should.equal('breakfast');
         done();
    });
  });
