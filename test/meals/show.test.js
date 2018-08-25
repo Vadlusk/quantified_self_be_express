@@ -10,8 +10,10 @@ describe('GET /api/v1/meals/:id', () => {
         res.body.should.be.a('object');
         res.body.should.have.property('id');
         res.body.should.have.property('name');
+        res.body.should.have.property('foods');
         res.body.id.should.equal(1);
         res.body.name.should.equal('breakfast');
+        res.body.foods.length.should.equal(2);
         done();
       });
   });
