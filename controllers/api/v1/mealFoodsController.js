@@ -10,7 +10,7 @@ const create = (req, res, next) => {
   MealFood.create(req.params)
     .then((mealFood) => Promise.all(queries)
       .then((info) => {
-        res.status(201).json(createMessage(info[0].name, info[1].name, 'create'));
+        res.status(201).json(createMessage(info[0].rows[0].name, info[1].name, 'create'));
       })
     );
 };
@@ -23,7 +23,7 @@ const destroy = (req, res, next) => {
   MealFood.destroy(req.params)
     .then((mealFood) => Promise.all(queries)
       .then((info) => {
-        res.status(201).json(createMessage(info[0].name, info[1].name, 'destroy'));
+        res.status(201).json(createMessage(info[0].rows[0].name, info[1].name, 'destroy'));
       })
     );
 };
