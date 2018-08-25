@@ -1,10 +1,4 @@
-const MealFood = require('../../../models/mealFood');
-const Meal     = require('../../../models/meal');
-const Food     = require('../../../models/food');
-
-const create = (req, res, next) => {
-  MealFood.create(req.params)
-}
+const Meal = require('../../../models/meal');
 
 const index = (req, res, next) => {
   Meal.all()
@@ -16,8 +10,4 @@ const show = (req, res, next) => {
     .then(meal => meal ? res.json(meal) : res.status(404).send);
 }
 
-module.exports = {
-  index,
-  show,
-  create
-}
+module.exports = { index, show }
