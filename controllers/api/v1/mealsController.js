@@ -2,7 +2,7 @@ const Meal = require('../../../models/meal');
 
 const index = (req, res, next) => {
   Meal.all()
-    .then(meals => res.json(meals));
+    .then(meals => res.json(meals.rows));
 };
 
 const show = (req, res, next) => {

@@ -14,7 +14,7 @@ describe('GET /api/v1/meals', () => {
         res.body[0].should.have.property('foods');
         res.body[0].id.should.equal(1);
         res.body[0].name.should.equal('breakfast');
-        res.body[0].foods.length.should.equal(3);
+        res.body[0].foods.length.should.equal(2);
         done();
       });
   });
