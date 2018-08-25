@@ -15,9 +15,13 @@ const create = (req, res, next) => {
     );
 };
 
+const destroy = (req, res, next) => {
+
+};
+
 const createMessage = (mealName, foodName) => {
   let message = {'message': `Successfully added ${foodName} to ${mealName}`};
   return message
 }
 
-module.exports = { create }
+module.exports = { create, destroy }
