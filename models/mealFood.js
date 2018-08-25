@@ -7,7 +7,8 @@ class MealFood {
     return database.raw(
       'INSERT INTO meal_foods (meal_id, food_id) VALUES (?, ?) RETURNING *',
       [params.mealId, params.id]
-    )}
+    )
+  }
 }
 
 module.exports = MealFood

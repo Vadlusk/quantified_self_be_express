@@ -8,7 +8,11 @@ const create = (req, res, next) => {
     Food.find(req.params.id),
   ]
   MealFood.create(req.params)
-    .then((mealFood) => res.status(201).json(mealFood));
+    .then((mealFood) => Promise.all(queries)
+      .then((info) => {
+        res.status(201).json(createMessage(info[0].name, info[1].name))
+      })
+    );
 };
 
 const createMessage = (mealName, foodName) => {
