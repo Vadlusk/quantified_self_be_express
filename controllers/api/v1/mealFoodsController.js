@@ -10,14 +10,35 @@ const create = (req, res, next) => {
   MealFood.create(req.params)
     .then((mealFood) => Promise.all(queries)
       .then((info) => {
-        res.status(201).json(createMessage(info[0].name, info[1].name))
+        res.status(201).json(createMessage(info[0].name, info[1].name, 'create'))
       })
     );
 };
 
-const createMessage = (mealName, foodName) => {
-  let message = {'message': `Successfully added ${foodName} to ${mealName}`};
+const destroy = (req, res, next) => {
+  let queries = [
+    Meal.find(req.params.mealId),
+    Food.find(req.params.id),
+  ]
+  MealFood.destroy(req.params)
+    .then((mealFood) => Promise.all(queries)
+      .then((info) => {
+        res.status(201).json(createMessage(info[0].name, info[1].name, 'destroy'))
+      })
+    );
+};
+
+const createMessage = (mealName, foodName, method) => {
+  let message;
+  switch (method) {
+    case 'create':
+      message = {'message': `Successfully added ${foodName} to ${mealName}`};
+      break;
+    case 'destroy':
+      message = {'message': `Successfully removed ${foodName} from ${mealName}`};
+      break;
+  }
   return message
 }
 
-module.exports = { create }
+module.exports = { create, destroy }
