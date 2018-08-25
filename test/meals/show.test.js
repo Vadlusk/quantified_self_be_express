@@ -13,7 +13,7 @@ describe('GET /api/v1/meals/:id', () => {
         res.body.should.have.property('foods');
         res.body.id.should.equal(1);
         res.body.name.should.equal('breakfast');
-        res.body.foods.length.should.equal(3);
+        res.body.foods.length.should.equal(2);
         done();
       });
   });
