@@ -4,11 +4,11 @@ const database = require('knex')(configuration);
 
 class Meal {
   static all() {
-    return database('meals').select()
+    return database('meals').select();
   }
 
   static find(id) {
-    return database('meals').where({id}).first()
+    return database('meals').where({id}).first();
   }
 }
 

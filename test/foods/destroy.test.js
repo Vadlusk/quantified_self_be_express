@@ -1,4 +1,4 @@
-var config = require('../testHelper')
+var config = require('../testHelper');
 
 describe('DELETE /api/v1/foods/:id', () => {
   it('should delete a specific food', done => {
@@ -7,6 +7,6 @@ describe('DELETE /api/v1/foods/:id', () => {
       .end((err, res) => {
         res.should.have.status(204);
         done();
-    });
+      });
   });
 });

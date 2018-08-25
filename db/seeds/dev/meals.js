@@ -6,6 +6,6 @@ exports.seed = (knex, Promise) => {
         {name: 'snacks'},
         {name: 'lunch'},
         {name: 'dinner'}
-      ])
+      ]);
     });
 };

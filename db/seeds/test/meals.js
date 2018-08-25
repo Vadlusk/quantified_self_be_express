@@ -9,14 +9,14 @@ exports.seed = function(knex, Promise) {
         {name: 'snack'},
         {name: 'lunch'},
         {name: 'dinner'},
-      ])
+      ]);
     })
     .then(() => {
       return knex('foods').insert([
         {name: 'apple', calories: 25},
         {name: 'steak', calories: 800},
         {name: 'banana', calories: 40}
-      ])
+      ]);
     })
     .then(() => {
       return knex('meal_foods').insert([
@@ -25,7 +25,6 @@ exports.seed = function(knex, Promise) {
         {meal_id: 2, food_id: 1},
         {meal_id: 2, food_id: 2},
         {meal_id: 3, food_id: 1}
-      ])
+      ]);
     });
-
 };

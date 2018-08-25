@@ -1,4 +1,4 @@
-var config = require('../testHelper')
+var config = require('../testHelper');
 
 describe('GET /api/v1/meals/:id', () => {
   it('should return a specific meal', done => {
@@ -13,13 +13,13 @@ describe('GET /api/v1/meals/:id', () => {
         res.body.id.should.equal(1);
         res.body.name.should.equal('breakfast');
         done();
-   });
- });
- it('should 404 if food does not exist', () => {
-   config.chai.request(config.app)
-    .get('/api/v1/meals/99999')
-    .end((err, res) => {
-      res.should.have.status(404);
-    });
+      });
+  });
+  it('should 404 if food does not exist', () => {
+    config.chai.request(config.app)
+      .get('/api/v1/meals/99999')
+      .end((err, res) => {
+        res.should.have.status(404);
+      });
   });
 });

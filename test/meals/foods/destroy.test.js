@@ -1,4 +1,4 @@
-var config = require('../../testHelper')
+var config = require('../../testHelper');
 
 describe('DELETE /api/v1/meals/:meal_id/foods/:id', () => {
   it('should delete a meal_food', done => {
@@ -13,6 +13,6 @@ describe('DELETE /api/v1/meals/:meal_id/foods/:id', () => {
         res.body.should.have.property('message');
         res.body.message.should.equal(message);
         done();
-    });
+      });
   });
 });
