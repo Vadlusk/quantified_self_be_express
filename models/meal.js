@@ -13,7 +13,7 @@ class Meal {
        LEFT JOIN foods ON foods.id = meal_foods.food_id
        GROUP BY meals.id`
     );
-  };
+  }
 
   static find(id) {
     return database.raw(
@@ -25,9 +25,9 @@ class Meal {
        LEFT JOIN foods ON foods.id = meal_foods.food_id
        WHERE meals.id = ?
        GROUP BY meals.id`,
-       [id]
+      [id]
     );
-  };
-};
+  }
+}
 
 module.exports = Meal;
