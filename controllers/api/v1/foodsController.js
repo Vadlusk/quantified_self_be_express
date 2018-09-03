@@ -18,8 +18,12 @@ const show = (req, res, next) => {
 };
 
 const update = (req, res, next) => {
-  Food.update(req.params.id, req.body.food)
-    .then(food => sendFood(food[0], res));
+  if (typeof req.body.food.name != 'string' || typeof req.body.food.calories != 'number') {
+    res.sendStatus(400);
+  } else {
+    Food.update(req.params.id, req.body.food)
+      .then(food => sendFood(food[0], res));
+  }
 };
 
 const destroy = (req, res, next) => {

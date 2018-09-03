@@ -6,11 +6,13 @@ const create = (req, res, next) => {
   MealFood.create(req.params)
     .then(() => Promise.all(findMealAndFood(req))
       .then(info => {
-        res.status(201).json(createMessage(
-          info[0].rows[0].name,
-          info[1].name,
-          'create'
-        ));
+        if (info[0].rows != null) {
+          res.status(201).json(createMessage(
+            info[0].rows[0].name,
+            info[1].name,
+            'create'
+          ));
+        }
       })
     );
 };
@@ -31,7 +33,7 @@ const destroy = (req, res, next) => {
 const findMealAndFood = req => {
   let queries = [
     Meal.find(req.params.mealId),
-    Food.find(req.params.id),
+    Food.find(req.params.id)
   ];
   return queries;
 };
