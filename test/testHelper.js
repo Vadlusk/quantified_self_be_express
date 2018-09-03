@@ -7,9 +7,7 @@ const app = require('../app');
 
 chai.use(chaiHttp);
 
-const environment = process.env.NODE_ENV || 'development';
-const configuration = require('../knexfile')[environment];
-const database = require('knex')(configuration);
+const database = require('../db/config');
 
 beforeEach((done) => {
   database.seed.run()
