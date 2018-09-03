@@ -3,12 +3,8 @@ const Food     = require('../../../models/food');
 const Meal     = require('../../../models/meal');
 
 const create = (req, res, next) => {
-  let queries = [
-    Meal.find(req.params.mealId),
-    Food.find(req.params.id),
-  ];
   MealFood.create(req.params)
-    .then(() => Promise.all(queries)
+    .then(() => Promise.all(findMealAndFood(req))
       .then(info => {
         res.status(201).json(createMessage(
           info[0].rows[0].name,
@@ -20,12 +16,8 @@ const create = (req, res, next) => {
 };
 
 const destroy = (req, res, next) => {
-  let queries = [
-    Meal.find(req.params.mealId),
-    Food.find(req.params.id),
-  ];
   MealFood.destroy(req.params)
-    .then(() => Promise.all(queries)
+    .then(() => Promise.all(findMealAndFood(req))
       .then(info => {
         res.status(201).json(createMessage(
           info[0].rows[0].name,
@@ -34,6 +26,14 @@ const destroy = (req, res, next) => {
         ));
       })
     );
+};
+
+const findMealAndFood = req => {
+  let queries = [
+    Meal.find(req.params.mealId),
+    Food.find(req.params.id),
+  ];
+  return queries;
 };
 
 const createMessage = (mealName, foodName, method) => {
