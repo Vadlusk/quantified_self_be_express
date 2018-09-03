@@ -1,11 +1,7 @@
 const Food = require('../../../models/food');
 
 const create = (req, res, next) => {
-  if (!req.body.food) {
-    res.sendStatus(400);
-  } else if (!req.body.food.name) {
-    res.sendStatus(400);
-  } else if (!req.body.food.calories) {
+  if (!req.body.food || !req.body.food.name || !req.body.food.calories) {
     res.sendStatus(400);
   } else {
     Food.create(req.body.food)
