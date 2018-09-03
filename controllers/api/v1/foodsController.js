@@ -1,12 +1,10 @@
 const Food = require('../../../models/food');
 
 const create = (req, res, next) => {
-  if (!req.body.food || !req.body.food.name || !req.body.food.calories) {
-    res.sendStatus(400);
-  } else {
+  (!req.body.food || !req.body.food.name || !req.body.food.calories) ?
+    res.sendStatus(400) :
     Food.create(req.body.food)
       .then(food => res.status(201).json(food[0]));
-  }
 };
 
 const index = (req, res, next) => {
