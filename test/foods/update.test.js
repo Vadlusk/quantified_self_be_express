@@ -4,7 +4,7 @@ describe('PUT /api/v1/foods/:id', () => {
   it('should edit a specific food with a name', done => {
     config.chai.request(config.app)
       .put('/api/v1/foods/1')
-      .send({ food: { 'name': 'Heeyy you guys', 'calories': 50 } })
+      .send({ 'food': { 'name': 'Heeyy you guys', 'calories': 50 } })
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
@@ -18,13 +18,24 @@ describe('PUT /api/v1/foods/:id', () => {
         done();
       });
   });
-  it('should 404 if food does not exist', () => {
-    config.chai.request(config.app)
-      .put('/api/v1/foods/99999')
-      .send({ food: { 'name': 'Heeyy you guys', calories: 50 } })
-      .end((err, res) => {
-        res.should.have.status(404);
-        done();
-      });
+  context('should not edit a food if', () => {
+    it('food does not exist', () => {
+      config.chai.request(config.app)
+        .put('/api/v1/foods/99999')
+        .send({ 'food': { 'name': 'Heeyy you guys', 'calories': 50 } })
+        .end((err, res) => {
+          res.should.have.status(404);
+          done();
+        });
+    });
+    it('wrong data types are used', () => {
+      config.chai.request(config.app)
+        .put('/api/v1/foods/1')
+        .send({ 'food': { 'name': 45, 'calories': 50 } })
+        .end((err, res) => {
+          res.should.have.status(400);
+          done();
+        });
+    });
   });
 });
