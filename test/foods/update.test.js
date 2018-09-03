@@ -19,7 +19,7 @@ describe('PUT /api/v1/foods/:id', () => {
       });
   });
   context('should not edit a food if', () => {
-    it('food does not exist', () => {
+    it('food does not exist', done => {
       config.chai.request(config.app)
         .put('/api/v1/foods/99999')
         .send({ 'food': { 'name': 'Heeyy you guys', 'calories': 50 } })
@@ -28,7 +28,7 @@ describe('PUT /api/v1/foods/:id', () => {
           done();
         });
     });
-    it('wrong data types are used', () => {
+    it('wrong data types are used', done => {
       config.chai.request(config.app)
         .put('/api/v1/foods/1')
         .send({ 'food': { 'name': 45, 'calories': 50 } })

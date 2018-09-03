@@ -37,7 +37,7 @@ const destroy = (req, res, next) => {
 };
 
 const sendFood = (food, res) => {
-  food ? res.json(food) : res.status(404).send;
+  food ? res.json(food) : res.sendStatus(404);
 };
 
 module.exports = {
