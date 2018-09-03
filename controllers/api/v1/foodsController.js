@@ -29,8 +29,11 @@ const update = (req, res, next) => {
 };
 
 const destroy = (req, res, next) => {
-  Food.destroy(req.params.id)
-    .then(res.sendStatus(204));
+  Food.find(req.params.id)
+    .then(food => (!food) ? res.sendStatus(404) :
+      Food.destroy(req.params.id)
+        .then(res.sendStatus(204))
+    );
 };
 
 const sendFood = (food, res) => {
