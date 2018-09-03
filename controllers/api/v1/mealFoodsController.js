@@ -15,24 +15,15 @@ const create = (req, res, next) => {
 };
 
 const destroy = (req, res, next) => {
+  let mealName;
+  let foodName;
   Meal.find(req.params.mealId)
-    .then(meal => !meal.rows[0] ? res.sendStatus(404) :
-      Food.find(req.params.id)
-        .then(food => !food ? res.sendStatus(404) :
-          MealFood.destroy(req.params)
-            .then(() => Promise.all(findMealAndFood(req))
-              .then(info => {
-                if (info[0].rows != null) {
-                  res.json(createMessage(
-                    info[0].rows[0].name,
-                    info[1].name,
-                    'destroy'
-                  ));
-                }
-              })
-            )
-        )
-    );
+    .then(meal => !meal.rows[0] ? res.sendStatus(404) : mealName = meal.rows[0].name);
+  Food.find(req.params.id)
+    .then(food => !food ? res.sendStatus(404) : foodName = food.name);
+
+  MealFood.destroy(req.params)
+    .then(() => res.json(createMessage(mealName, foodName, 'destroy')));
 };
 
 const findMealAndFood = req => {
