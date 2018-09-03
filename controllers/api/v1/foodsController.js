@@ -1,8 +1,10 @@
 const Food = require('../../../models/food');
 
 const create = (req, res, next) => {
-  Food.create(req.body.food)
-    .then(food => res.json(food[0]));
+  (!req.body.food || !req.body.food.name || !req.body.food.calories) ?
+    res.sendStatus(400) :
+    Food.create(req.body.food)
+      .then(food => res.status(201).json(food[0]));
 };
 
 const index = (req, res, next) => {
@@ -16,17 +18,24 @@ const show = (req, res, next) => {
 };
 
 const update = (req, res, next) => {
-  Food.update(req.params.id, req.body.food)
-    .then(food => sendFood(food[0], res));
+  if (typeof req.body.food.name != 'string' || typeof req.body.food.calories != 'number') {
+    res.sendStatus(400);
+  } else {
+    Food.update(req.params.id, req.body.food)
+      .then(food => sendFood(food[0], res));
+  }
 };
 
 const destroy = (req, res, next) => {
-  Food.destroy(req.params.id)
-    .then(res.sendStatus(204));
+  Food.find(req.params.id)
+    .then(food => (!food) ? res.sendStatus(404) :
+      Food.destroy(req.params.id)
+        .then(res.sendStatus(204))
+    );
 };
 
 const sendFood = (food, res) => {
-  food ? res.json(food) : res.status(404).send;
+  food ? res.json(food) : res.sendStatus(404);
 };
 
 module.exports = {

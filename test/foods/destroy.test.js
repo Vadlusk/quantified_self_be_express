@@ -9,4 +9,12 @@ describe('DELETE /api/v1/foods/:id', () => {
         done();
       });
   });
+  it('should not delete a specific food if it does not exist', done => {
+    config.chai.request(config.app)
+      .delete('/api/v1/foods/19999')
+      .end((err, res) => {
+        res.should.have.status(404);
+        done();
+      });
+  });
 });

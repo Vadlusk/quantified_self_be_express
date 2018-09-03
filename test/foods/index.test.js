@@ -8,7 +8,7 @@ describe('GET /api/v1/foods', () => {
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('array');
-        res.body.length.should.equal(3);
+        res.body.length.should.equal(4);
         res.body[0].should.have.property('id');
         res.body[0].should.have.property('name');
         res.body[0].should.have.property('calories');
