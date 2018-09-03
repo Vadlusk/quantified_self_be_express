@@ -1,8 +1,7 @@
+var express     = require('express');
 var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var cors = require('cors');
+var logger      = require('morgan');
+var cors        = require('cors');
 
 var foodsRouter = require('./routes/api/v1/foods');
 var mealsRouter = require('./routes/api/v1/meals');
