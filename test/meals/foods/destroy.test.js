@@ -7,7 +7,7 @@ describe('DELETE /api/v1/meals/:meal_id/foods/:id', () => {
     config.chai.request(config.app)
       .delete('/api/v1/meals/2/foods/1')
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
         res.body.should.have.property('message');
@@ -15,7 +15,7 @@ describe('DELETE /api/v1/meals/:meal_id/foods/:id', () => {
         done();
       });
   });
-  context('should not make a meal food if', () => {
+  context('should not delete a meal food if', () => {
     it('the meal does not exist', done => {
       config.chai.request(config.app)
         .post('/api/v1/meals/99999/foods/4')
