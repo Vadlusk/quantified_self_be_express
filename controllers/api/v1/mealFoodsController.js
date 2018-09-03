@@ -26,14 +26,6 @@ const destroy = (req, res, next) => {
     .then(() => res.json(createMessage(mealName, foodName, 'destroy')));
 };
 
-const findMealAndFood = req => {
-  let queries = [
-    Meal.find(req.params.mealId),
-    Food.find(req.params.id)
-  ];
-  return queries;
-};
-
 const createMessage = (mealName, foodName, method) => {
   let message;
   switch (method) {
