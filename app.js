@@ -3,8 +3,8 @@ var createError = require('http-errors');
 var logger      = require('morgan');
 var cors        = require('cors');
 
-var foodsRouter = require('./routes/api/v1/foods');
-var mealsRouter = require('./routes/api/v1/meals');
+var foodsRouter         = require('./routes/api/v1/foods');
+var mealsRouter         = require('./routes/api/v1/meals');
 var favoriteFoodsRouter = require('./routes/api/v1/favoriteFoods');
 
 var app = express();
