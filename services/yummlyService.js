@@ -10,7 +10,7 @@ class YummlyService {
       }
     })
       .then(res => res.json())
-      .then(info => console.log(info));
+      .then(info => info.matches);
   }
 }
 
