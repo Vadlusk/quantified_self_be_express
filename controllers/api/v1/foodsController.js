@@ -38,10 +38,4 @@ const sendFood = (food, res) => {
   food ? res.json(food) : res.sendStatus(404);
 };
 
-module.exports = {
-  create,
-  index,
-  show,
-  update,
-  destroy
-};
+module.exports = { create, index, show, update, destroy };

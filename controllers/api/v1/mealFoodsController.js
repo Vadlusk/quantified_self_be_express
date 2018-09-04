@@ -3,53 +3,27 @@ const Food     = require('../../../models/food');
 const Meal     = require('../../../models/meal');
 
 const create = (req, res, next) => {
+  let mealName;
+  let foodName;
   Meal.find(req.params.mealId)
-    .then(meal => !meal.rows[0] ? res.sendStatus(404) :
-      Food.find(req.params.id)
-        .then(food => !food ? res.sendStatus(404) :
-          MealFood.create(req.params)
-            .then(() => Promise.all(findMealAndFood(req))
-              .then(info => {
-                if (info[0].rows != null) {
-                  res.status(201).json(createMessage(
-                    info[0].rows[0].name,
-                    info[1].name,
-                    'create'
-                  ));
-                }
-              })
-            )
-        )
-    );
+    .then(meal => !meal.rows[0] ? res.sendStatus(404) : mealName = meal.rows[0].name);
+  Food.find(req.params.id)
+    .then(food => !food ? res.sendStatus(404) : foodName = food.name);
+
+  MealFood.create(req.params)
+    .then(() => res.status(201).json(createMessage(mealName, foodName, 'create')));
 };
 
 const destroy = (req, res, next) => {
+  let mealName;
+  let foodName;
   Meal.find(req.params.mealId)
-    .then(meal => !meal.rows[0] ? res.sendStatus(404) :
-      Food.find(req.params.id)
-        .then(food => !food ? res.sendStatus(404) :
-          MealFood.destroy(req.params)
-            .then(() => Promise.all(findMealAndFood(req))
-              .then(info => {
-                if (info[0].rows != null) {
-                  res.json(createMessage(
-                    info[0].rows[0].name,
-                    info[1].name,
-                    'destroy'
-                  ));
-                }
-              })
-            )
-        )
-    );
-};
+    .then(meal => !meal.rows[0] ? res.sendStatus(404) : mealName = meal.rows[0].name);
+  Food.find(req.params.id)
+    .then(food => !food ? res.sendStatus(404) : foodName = food.name);
 
-const findMealAndFood = req => {
-  let queries = [
-    Meal.find(req.params.mealId),
-    Food.find(req.params.id)
-  ];
-  return queries;
+  MealFood.destroy(req.params)
+    .then(() => res.json(createMessage(mealName, foodName, 'destroy')));
 };
 
 const createMessage = (mealName, foodName, method) => {
