@@ -25,6 +25,10 @@ class Food {
   static destroy(id) {
     return database('foods').where({id}).del();
   }
+
+  static favorites() {
+    
+  }
 }
 
 module.exports = Food;
