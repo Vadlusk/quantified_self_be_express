@@ -1,7 +1,7 @@
 var config = require('../../testHelper');
 
 describe('GET /api/v1/foods/:id/recipes', () => {
-  it('should return top 5 foods sorted by times eaten', done => {
+  it('should return recipes for food with that id', done => {
     config.chai.request(config.app)
       .get('/api/v1/foods/1/recipes')
       .end((err, res) => {

@@ -1,8 +1,7 @@
 const RecipeSearch = require('../../../../models/recipeSearch')
 
 const index = (req, res, next) => {
-  console.log(req.params.id);
-  RecipeSearch.search()
+  RecipeSearch.search(req.params.id)
     .then((recipes) => res.json(recipes));
 };
 
