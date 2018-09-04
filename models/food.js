@@ -38,8 +38,8 @@ class Food {
       FROM
         (
           SELECT f.*, COUNT(f.id) AS timesEaten, array_agg(DISTINCT m.name) AS meals
-          FROM foods f
-          LEFT JOIN meal_foods mf on f.id = mf.food_id
+          FROM meal_foods mf
+          LEFT JOIN foods f on mf.food_id = f.id
           LEFT JOIN meals m on m.id = mf.meal_id
           GROUP BY f.id
         ) subquery
