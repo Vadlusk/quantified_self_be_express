@@ -37,7 +37,7 @@ class Food {
         )) AS foods
       FROM
         (
-          SELECT f.*, COUNT(f.id) AS timesEaten, array_agg(m.name) AS meals
+          SELECT f.*, COUNT(f.id) AS timesEaten, array_agg(DISTINCT m.name) AS meals
           FROM foods f
           LEFT JOIN meal_foods mf on f.id = mf.food_id
           LEFT JOIN meals m on m.id = mf.meal_id
