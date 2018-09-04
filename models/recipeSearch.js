@@ -5,7 +5,10 @@ class RecipeSearch {
   static search(id) {
     return Food.find(id)
       .then(food => YummlyService.search(food.name))
-      .then(results => console.log(results));
+      .then(results => results.map(result => {
+        let url = 'https://www.yummly.com/v1/recipe/';
+        return { name: result.recipeName, url: `${url}${result.id}`};
+      }));
   }
 }
 
