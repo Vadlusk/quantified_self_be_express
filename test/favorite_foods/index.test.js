@@ -16,6 +16,8 @@ describe('GET /api/v1/favorite_foods', () => {
         res.body[0].foods.length.should.equal(2);
         res.body[0].foods[0].should.have.property('name');
         res.body[0].foods[0].should.have.property('calories');
+        res.body[0].foods[0].should.have.property('mealswheneaten');
+        res.body[0].foods[0].mealswheneaten.should.be.a('array');
         done();
       });
   });
