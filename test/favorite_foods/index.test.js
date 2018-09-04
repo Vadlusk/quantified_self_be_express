@@ -7,6 +7,7 @@ describe('GET /api/v1/favorite_foods', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.should.be.json;
+        console.log(res.body)
         res.body.should.be.a('array');
         res.body.length.should.equal(2);
         res.body[0].should.have.property('timeseaten');

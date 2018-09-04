@@ -25,18 +25,23 @@ class Food {
   static destroy(id) {
     return database('foods').where({id}).del();
   }
-  
+
   static favorites() {
     return database.raw(`
       SELECT
         timesEaten,
-        json_agg(json_build_object('name', name, 'calories', calories))
-          AS foods
-      FROM (
-        SELECT f.*, COUNT(f.id) AS timesEaten FROM foods f
-        LEFT JOIN meal_foods mf on f.id = mf.food_id
-        LEFT JOIN meals m on m.id = mf.meal_id
-        GROUP BY f.id ) subquery
+        json_agg(json_build_object(
+          'name', name,
+          'calories', calories
+        )) AS foods
+      FROM
+        (
+          SELECT f.*, COUNT(f.id) AS timesEaten, array_agg(m.name) AS meals
+          FROM foods f
+          LEFT JOIN meal_foods mf on f.id = mf.food_id
+          LEFT JOIN meals m on m.id = mf.meal_id
+          GROUP BY f.id
+        ) subquery
       GROUP BY timesEaten
     `);
   }
