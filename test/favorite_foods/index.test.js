@@ -1,4 +1,4 @@
-var config = require('test_helper');
+var config = require('../testHelper');
 
 describe('GET /api/v1/favorite_foods', () => {
   it('should return top 5 foods sorted by times eaten', done => {
