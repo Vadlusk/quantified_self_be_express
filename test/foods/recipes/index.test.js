@@ -15,4 +15,11 @@ describe('GET /api/v1/foods/:id/recipes', () => {
         done();
       });
   });
+  it('should 404 if food does not exist', () => {
+    config.chai.request(config.app)
+      .get('/api/v1/foods/99999/recipes')
+      .end((err, res) => {
+        res.should.have.status(404);
+      });
+  });
 });
