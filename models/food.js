@@ -32,7 +32,8 @@ class Food {
         timesEaten,
         json_agg(json_build_object(
           'name', name,
-          'calories', calories
+          'calories', calories,
+          'mealsWhenEaten', meals
         )) AS foods
       FROM
         (
